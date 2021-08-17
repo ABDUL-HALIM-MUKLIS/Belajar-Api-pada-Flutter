@@ -25,4 +25,21 @@ class User {
 
     return User.createUser(userData);
   }
+
+  static Future<List<User>> getUsers(var page) async {
+    Uri apiURL = Uri.parse("https://reqres.in/api/users?page=" + page);
+
+    var apiResult = await http.get(apiURL);
+
+    var jsonObject = jsonDecode(apiResult.body);
+
+    List<dynamic> listUser = (jsonObject as Map<String, dynamic>)['data'];
+
+    List<User> users = [];
+    for (int i = 0; i < listUser.length; i++) {
+      users.add(User.createUser(listUser[i]));
+    }
+    // print(users);
+    return users;
+  }
 }

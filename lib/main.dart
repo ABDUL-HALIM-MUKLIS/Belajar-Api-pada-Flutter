@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'viewget.dart';
+import 'viewgetkumpulandata.dart';
 import 'viewpost.dart';
 
 void main() {
@@ -61,6 +62,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 }));
               },
               child: const Text('belajar GET'),
+            ),
+            ElevatedButton(
+              style: style,
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return apigetkumpulandata();
+                }));
+              },
+              child: const Text('belajar GET Kumpulan Data'),
             ),
           ],
         ),
